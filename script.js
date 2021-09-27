@@ -4,10 +4,21 @@ let computerScore = 0;
 
 game();
 
-function getComputerSelection() {
-    // Randomly return rock, paper or scissors
-    let randChoice = choices[Math.floor(Math.random() * choices.length)];
-    return randChoice;
+function game() {
+    // Plays 5 rounds
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(getPlayerSelection(), getComputerSelection()));
+    }
+
+    if (computerScore > playerScore) {
+        console.log(`Computer wins with a score of ${computerScore} - ${playerScore}!`);
+    }
+    else if (playerScore > computerScore) {
+        console.log(`You win with a score of ${playerScore} - ${computerScore}!`);
+    }
+    else {
+        console.log(`${playerScore} - ${computerScore}! It's a tie!`);
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -42,25 +53,20 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(getPlayerSelection(), getComputerSelection()));
-    }
-
-    if (computerScore > playerScore) {
-        console.log(`Computer wins with a score of ${computerScore} - ${playerScore}`);
-    }
-    else {
-        console.log(`You win with a score of ${playerScore} - ${computerScore}`);
-    }
-}
-
 function getPlayerSelection() {
     let playerSelection = window.prompt('Choose your weapon');
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+
     while (!choices.includes(playerSelection)) {
         playerSelection = window.prompt('Choose between rock, paper, and scissors');
         playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
     }
+
     return playerSelection;
+}
+
+function getComputerSelection() {
+    // Randomly return rock, paper or scissors
+    let randChoice = choices[Math.floor(Math.random() * choices.length)];
+    return randChoice;
 }
