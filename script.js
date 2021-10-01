@@ -1,25 +1,48 @@
-const choices = ['Rock', 'Paper', 'Scissors'];
 let playerScore = 0;
 let computerScore = 0;
 
-game();
+const gameButtons = document.querySelectorAll('.game-buttons');
+const replayButton = document.querySelector('#replay');
+const playerScoreText = document.querySelector('.player-score');
+const computerScoreText = document.querySelector('.computer-score');
+const result = document.querySelector('.result');
 
-function game() {
-    // Plays 5 rounds
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(getPlayerSelection(), getComputerSelection()));
-    }
 
-    if (computerScore > playerScore) {
-        console.log(`Computer wins with a score of ${computerScore} - ${playerScore}!`);
-    }
-    else if (playerScore > computerScore) {
-        console.log(`You win with a score of ${playerScore} - ${computerScore}!`);
-    }
-    else {
-        console.log(`${playerScore} - ${computerScore}! It's a tie!`);
+gameButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.id;
+        game(playerSelection);
+    });
+});
+
+replayButton.addEventListener('click', playAgain);
+
+function playAgain(){
+    playerScore = 0;
+    computerScore = 0;
+
+    result.textContent = "";
+    playerScoreText.textContent = `Player: 0`;
+    computerScoreText.textContent = `Computer: 0`;
+
+    replayButton.style.display = 'none';
+    gameButtons.forEach(button => {
+        button.style.display = 'block';
+    });
+    
+}
+
+function game(playerSelection) {
+
+    result.textContent = playRound(playerSelection, getComputerSelection());
+    playerScoreText.textContent = `Player: ${playerScore}`;
+    computerScoreText.textContent = `Computer: ${computerScore}`;
+
+    if (playerScore === 5 || computerScore === 5) {
+        endGame();
     }
 }
+
 
 function playRound(playerSelection, computerSelection) {
     // Plays a single round
@@ -53,20 +76,26 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function getPlayerSelection() {
-    let playerSelection = window.prompt('Choose your weapon');
-    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-
-    while (!choices.includes(playerSelection)) {
-        playerSelection = window.prompt('Choose between rock, paper, and scissors');
-        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+function endGame() {
+    if (computerScore > playerScore) {
+        result.textContent = `Computer wins with a score of ${computerScore} - ${playerScore}!`;
+    }
+    else if (playerScore > computerScore) {
+        result.textContent = `You win with a score of ${playerScore} - ${computerScore}!`;
+    }
+    else {
+        result.textContent = `${playerScore} - ${computerScore}! It's a tie!`;
     }
 
-    return playerSelection;
+    gameButtons.forEach(button => {
+        button.style.display = 'none';
+    });
+    replayButton.style.display = 'block';
 }
 
 function getComputerSelection() {
     // Randomly return rock, paper or scissors
+    const choices = ['Rock', 'Paper', 'Scissors'];
     let randChoice = choices[Math.floor(Math.random() * choices.length)];
     return randChoice;
 }
