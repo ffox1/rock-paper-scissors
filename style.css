@@ -1,0 +1,41 @@
+body {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    background-color: aqua;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.title {
+font-size: 50px;
+}
+
+.choose {
+    font-size: 35px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    font-size: 20px;
+    border: 10px solid black;
+    background-color: blue;
+    color: crimson;
+}
+
+.score {
+    display: flex;
+    gap: 20px;
+    font-size: 25px;
+}
+
+.result {
+    font-size: 30px;
+}

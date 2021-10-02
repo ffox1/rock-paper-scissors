@@ -7,7 +7,6 @@ const playerScoreText = document.querySelector('.player-score');
 const computerScoreText = document.querySelector('.computer-score');
 const result = document.querySelector('.result');
 
-
 gameButtons.forEach((button) => {
     button.addEventListener('click', () => {
         let playerSelection = button.id;
@@ -16,21 +15,6 @@ gameButtons.forEach((button) => {
 });
 
 replayButton.addEventListener('click', playAgain);
-
-function playAgain(){
-    playerScore = 0;
-    computerScore = 0;
-
-    result.textContent = "";
-    playerScoreText.textContent = `Player: 0`;
-    computerScoreText.textContent = `Computer: 0`;
-
-    replayButton.style.display = 'none';
-    gameButtons.forEach(button => {
-        button.style.display = 'block';
-    });
-    
-}
 
 function game(playerSelection) {
 
@@ -42,7 +26,6 @@ function game(playerSelection) {
         endGame();
     }
 }
-
 
 function playRound(playerSelection, computerSelection) {
     // Plays a single round
@@ -91,6 +74,20 @@ function endGame() {
         button.style.display = 'none';
     });
     replayButton.style.display = 'block';
+}
+
+function playAgain() {
+    playerScore = 0;
+    computerScore = 0;
+
+    result.textContent = "";
+    playerScoreText.textContent = `Player: 0`;
+    computerScoreText.textContent = `Computer: 0`;
+
+    replayButton.style.display = 'none';
+    gameButtons.forEach(button => {
+        button.style.display = 'flex';
+    });
 }
 
 function getComputerSelection() {
