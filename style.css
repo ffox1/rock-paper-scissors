@@ -1,21 +1,23 @@
 body {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-    background-color: aqua;
+    font-family: 'Trebuchet MS';
+    background-color: #272727;
+    color: #dad733;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .title {
-font-size: 50px;
+    font-size: 60px;
+    font-weight: 600;
 }
 
 .choose {
-    font-size: 35px;
+    font-size: 40px;
 }
 
 .buttons {
@@ -24,18 +26,21 @@ font-size: 50px;
 }
 
 button {
-    font-size: 20px;
-    border: 10px solid black;
-    background-color: blue;
-    color: crimson;
+    font-size: 25px;
+    padding: 8px;
+    border: 5px solid #363636;
+    border-radius: 8px;
+    background-color: #4b4b4b;
+    color: #dad733;
+    font-weight: 500;
 }
 
 .score {
     display: flex;
     gap: 20px;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .result {
-    font-size: 30px;
+    font-size: 35px;
 }
