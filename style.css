@@ -1,6 +1,10 @@
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Trebuchet MS';
-    background-color: #272727;
+    background-image: radial-gradient( circle farthest-corner at -4% -12.9%,  rgb(50, 67, 75) 0.3%, rgb(24, 26, 37) 90.2% );
     color: #dad733;
 }
 
@@ -25,16 +29,6 @@ body {
     gap: 20px;
 }
 
-button {
-    font-size: 25px;
-    padding: 8px;
-    border: 5px solid #363636;
-    border-radius: 8px;
-    background-color: #4b4b4b;
-    color: #dad733;
-    font-weight: 500;
-}
-
 .score {
     display: flex;
     gap: 20px;
@@ -44,3 +38,26 @@ button {
 .result {
     font-size: 35px;
 }
+
+button {
+    background-image: linear-gradient(to right, #485563 0%, #29323c  51%, #485563  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #dad733;            
+    box-shadow: 0 0 10px #eee;
+    border-radius: 10px;
+    display: block;
+    font-size: 25px;
+    border: 5px solid #363636;
+    font-weight: 500;
+    
+ }
+
+ button:hover {
+   
+   color: #fff;
+ }
